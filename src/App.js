@@ -1,13 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Counter from "./components/counterComponent";
+import NavBar from "./components/navbar";
+import Counters from "./components/countersComponent";
 
 function App() {
   return (
-    <div className="container">
-      <Counter />
-    </div>
+    <React.Fragment>
+      <NavBar />
+      <main className="container">
+        <Counters />
+      </main>
+    </React.Fragment>
   );
 }
 
