@@ -23,6 +23,16 @@ class TableXXX extends Component {
     console.log(page);
   };
 
+  handlePriv = () => {
+    const statePriv = this.state.currentPage - 1;
+    this.setState({ currentPage: statePriv });
+  };
+
+  handelNext = () => {
+    const stateNext = this.state.currentPage + 1;
+    this.setState({ currentPage: stateNext });
+  };
+
   render() {
     const { length: count } = this.state.data;
     const data = paginate(
@@ -75,6 +85,8 @@ class TableXXX extends Component {
               itemsCount={this.state.data.length}
               pageSize={this.state.pageSize}
               onPageChange={this.handlePageChange}
+              onPriv={this.handlePriv}
+              onNext={this.handelNext}
               currentPage={this.state.currentPage}
             />
           </div>

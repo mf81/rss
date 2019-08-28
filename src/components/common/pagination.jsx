@@ -3,7 +3,14 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 
 const Pagination = props => {
-  const { itemsCount, pageSize, onPageChange, currentPage } = props;
+  const {
+    itemsCount,
+    pageSize,
+    onPageChange,
+    currentPage,
+    onPriv,
+    onNext
+  } = props;
 
   const pagesCount = Math.ceil(itemsCount / pageSize);
   if (pagesCount === 1) return null;
@@ -12,6 +19,15 @@ const Pagination = props => {
   return (
     <nav aria-label="Page navigation">
       <ul className="pagination">
+        <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
+          <a
+            className="page-link "
+            onClick={() => onPriv()}
+            style={{ cursor: "pointer" }}
+          >
+            Poprzednia
+          </a>
+        </li>
         {pages.map(page => (
           <li
             className={page === currentPage ? "page-item active" : "page-item"}
@@ -27,6 +43,19 @@ const Pagination = props => {
             </a>
           </li>
         ))}
+        <li
+          className={
+            currentPage === pages.length ? "page-item disabled" : "page-item"
+          }
+        >
+          <a
+            className="page-link"
+            onClick={() => onNext()}
+            style={{ cursor: "pointer" }}
+          >
+            Następna
+          </a>
+        </li>
       </ul>
     </nav>
   );
