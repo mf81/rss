@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
+import Pages from "./paginationPages";
+import PageSize from "./paginationPageSize";
 
 const Pagination = props => {
   const {
@@ -9,63 +11,38 @@ const Pagination = props => {
     onPageChange,
     currentPage,
     onPriv,
-    onNext
+    onNext,
+    onPageSize
   } = props;
 
-  const pagesCount = Math.ceil(itemsCount / pageSize);
-  if (pagesCount === 1) return null;
-  const pages = _.range(1, pagesCount + 1);
-
-  return (
-    <nav aria-label="Page navigation">
-      <ul className="pagination">
-        <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
-          <a
-            className="page-link "
-            onClick={() => onPriv()}
-            style={{ cursor: "pointer" }}
-          >
-            Poprzednia
-          </a>
-        </li>
-        {pages.map(page => (
-          <li
-            className={page === currentPage ? "page-item active" : "page-item"}
-            key={page}
-          >
-            <a
-              className="page-link"
-              key={page}
-              onClick={() => onPageChange(page)}
-              style={{ cursor: "pointer" }}
-            >
-              {page}
-            </a>
-          </li>
-        ))}
-        <li
-          className={
-            currentPage === pages.length ? "page-item disabled" : "page-item"
-          }
-        >
-          <a
-            className="page-link"
-            onClick={() => onNext()}
-            style={{ cursor: "pointer" }}
-          >
-            Następna
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
+  if (pagesCount !== 1) {
+    return (
+      <React.Fragment>
+        <Pages
+          itemsCount={itemsCount}
+          pageSize={pageSize}
+          onPageChange={onPageChange}
+          onPriv={onPriv}
+          onNext={onNext}
+          currentPage={currentPage}
+          onPageSize={onPageSize}
+        />
+        <PageSize pageSize={pageSize} onPageSize={onPageSize} />
+      </React.Fragment>
+    );
+  } else {
+    return <PageSize pageSize={pageSize} onPageSize={onPageSize} />;
+  }
 };
 
 Pagination.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired
+  onPriv: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onPageSize: PropTypes.func.isRequired
 };
 
 export default Pagination;

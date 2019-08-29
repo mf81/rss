@@ -9,7 +9,7 @@ class TableXXX extends Component {
   state = {
     data: getData(),
     genres: getGenres(),
-    pageSize: 4,
+    pageSize: 5,
     currentPage: 1
   };
 
@@ -31,6 +31,10 @@ class TableXXX extends Component {
   handelNext = () => {
     const stateNext = this.state.currentPage + 1;
     this.setState({ currentPage: stateNext });
+  };
+
+  handlePageSize = size => {
+    this.setState({ currentPage: 1, pageSize: size });
   };
 
   render() {
@@ -88,6 +92,7 @@ class TableXXX extends Component {
               onPriv={this.handlePriv}
               onNext={this.handelNext}
               currentPage={this.state.currentPage}
+              onPageSize={this.handlePageSize}
             />
           </div>
         </div>
