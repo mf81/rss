@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import Pages from "./paginationPages";
@@ -15,23 +15,27 @@ const Pagination = props => {
     onPageSize
   } = props;
 
+  const pagesCount = Math.ceil(itemsCount / pageSize);
   if (pagesCount !== 1) {
     return (
-      <React.Fragment>
+      <div class="container">
         <Pages
-          itemsCount={itemsCount}
-          pageSize={pageSize}
           onPageChange={onPageChange}
           onPriv={onPriv}
           onNext={onNext}
           currentPage={currentPage}
           onPageSize={onPageSize}
+          pagesCount={pagesCount}
         />
         <PageSize pageSize={pageSize} onPageSize={onPageSize} />
-      </React.Fragment>
+      </div>
     );
   } else {
-    return <PageSize pageSize={pageSize} onPageSize={onPageSize} />;
+    return (
+      <div class="container">
+        <PageSize pageSize={pageSize} onPageSize={onPageSize} />;
+      </div>
+    );
   }
 };
 

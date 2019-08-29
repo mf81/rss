@@ -39,6 +39,7 @@ class TableXXX extends Component {
 
   render() {
     const { length: count } = this.state.data;
+
     const data = paginate(
       this.state.data,
       this.state.currentPage,
@@ -85,16 +86,18 @@ class TableXXX extends Component {
                 ))}
               </tbody>
             </table>
-            <Pagination
-              itemsCount={this.state.data.length}
-              pageSize={this.state.pageSize}
-              onPageChange={this.handlePageChange}
-              onPriv={this.handlePriv}
-              onNext={this.handelNext}
-              currentPage={this.state.currentPage}
-              onPageSize={this.handlePageSize}
-            />
           </div>
+        </div>
+        <div className="row">
+          <Pagination
+            itemsCount={this.state.data.length}
+            pageSize={this.state.pageSize}
+            onPageChange={this.handlePageChange}
+            onPriv={this.handlePriv}
+            onNext={this.handelNext}
+            currentPage={this.state.currentPage}
+            onPageSize={this.handlePageSize}
+          />
         </div>
       </React.Fragment>
     );
