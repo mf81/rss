@@ -1,5 +1,8 @@
 /fakeStaff
 fakeData.js
+fakeGenres.js
+fakeGenreService.js
+fakeMovieService.js
 /node_modules
 /.pnp
 .pnp.js
