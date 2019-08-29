@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getData } from "../fakeStaff/fakeData";
-import { getGenres } from "../fakeStaff/fakeGenres";
+import { getGenres } from "../fakeStaff/fakeGenreService";
 import Pagination from "./common/pagination";
 import Genres from "./genresComponent";
 import { paginate } from "./common/paginate";
