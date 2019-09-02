@@ -18,7 +18,7 @@ const Pagination = props => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
   if (pagesCount !== 1) {
     return (
-      <div class="container">
+      <div className="container">
         <Pages
           onPageChange={onPageChange}
           onPriv={onPriv}
@@ -32,8 +32,8 @@ const Pagination = props => {
     );
   } else {
     return (
-      <div class="container">
-        <PageSize pageSize={pageSize} onPageSize={onPageSize} />;
+      <div className="container">
+        <PageSize pageSize={pageSize} onPageSize={onPageSize} />
       </div>
     );
   }

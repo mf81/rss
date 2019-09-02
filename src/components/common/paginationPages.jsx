@@ -7,7 +7,7 @@ const Pages = props => {
   const pages = _.range(1, pagesCount + 1);
 
   return (
-    <div class="row justify-content-md-center">
+    <div className="row justify-content-md-center">
       <nav aria-label="Page navigation">
         <ul className="pagination">
           <li

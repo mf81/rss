@@ -1,21 +1,36 @@
 import React, { Component } from "react";
 
-class Genres extends Component {
-  render() {
-    return (
-      <ul className="list-group">
-        {this.props.genres.map(g => (
-          <li
-            className="list-group-item"
-            style={{ cursor: "pointer" }}
-            key={g._id}
-          >
-            {g.name}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+const Genres = props => {
+  const {
+    genres,
+    onGenres,
+    textProperty,
+    valueProperty,
+    selectedGenres
+  } = props;
+  return (
+    <ul className="list-group">
+      {genres.map(g => (
+        <li
+          className={
+            selectedGenres._id === g._id
+              ? "list-group-item active"
+              : "list-group-item"
+          }
+          style={{ cursor: "pointer" }}
+          key={g[valueProperty]}
+          onClick={() => onGenres(g)}
+        >
+          {g[textProperty]}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+Genres.defaultProps = {
+  textProperty: "name",
+  valueProperty: "_id"
+};
 
 export default Genres;

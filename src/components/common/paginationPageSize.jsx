@@ -3,16 +3,16 @@ const PageSize = props => {
   const { pageSize, onPageSize } = props;
   const pageSizeNew = [5, 10, 15, 20, 50, 100];
   return (
-    <div class="row justify-content-md-center">
+    <div className="row justify-content-md-center">
       <nav aria-label="Page navigation 2">
-        <ul class="pagination">
+        <ul className="pagination">
           {pageSizeNew.map(p => (
             <li
-              class={pageSize === p ? "page-item active" : "page-item"}
+              className={pageSize === p ? "page-item active" : "page-item"}
               key={p}
             >
               <a
-                class="page-link"
+                className="page-link"
                 style={{ cursor: "pointer" }}
                 onClick={() => onPageSize(p)}
               >
